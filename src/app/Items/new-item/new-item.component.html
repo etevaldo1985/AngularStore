@@ -1,0 +1,87 @@
+<div class="modal-header">
+
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="text-center" novalidate [formGroup]='itemForm'>
+
+    <p class="h4 mb-4">New Product</p>
+
+    <!-- Name -->
+    <input type="name" id="defaultLoginFormName" formControlName='name' class="form-control mb-4" placeholder="name"
+      [ngClass]="{'is-invalid' : displayMessage.name}" />
+    <span class="text-danger" *ngIf="displayMessage.name">
+      <p [innerHTML]="displayMessage.name"></p>
+    </span>
+    <!-- Model -->
+    <input type="model" id="defaultLoginFormModel" formControlName='model' class="form-control mb-4" placeholder="model"
+      [ngClass]="{'is-invalid' : displayMessage.model}" />
+    <span class="text-danger" *ngIf="displayMessage.model">
+      <p [innerHTML]="displayMessage.model"></p>
+    </span>
+    <!-- Cost Price -->
+    <input type="costPrice" id="defaultLoginFormCostPrice" formControlName='costPrice' class="form-control mb-4"
+      placeholder="Cost Price" [ngClass]="{'is-invalid' : displayMessage.costPrice}" />
+    <span class="text-danger" *ngIf="displayMessage.costPrice">
+      <p [innerHTML]="displayMessage.costPrice"></p>
+    </span>
+
+    <!-- Price -->
+    <input type="price" id="defaultLoginFormPrice" formControlName='price' class="form-control mb-4" placeholder="price"
+      [ngClass]="{'is-invalid' : displayMessage.price}" />
+    <span class="text-danger" *ngIf="displayMessage.price">
+      <p [innerHTML]="displayMessage.price"></p>
+    </span>
+
+
+    <!-- Supplier -->
+    <input type="supplier" id="defaultLoginFormSupplier" formControlName='supplier' class="form-control mb-4"
+      placeholder="supplier" [ngClass]="{'is-invalid' : displayMessage.supplier}" />
+    <span class="text-danger" *ngIf="displayMessage.supplier">
+      <p [innerHTML]="displayMessage.supplier"></p>
+    </span>
+
+    <!-- Active -->
+
+    <label class="checkbox"><input class="form-check-input form-control"  type="checkbox" id="defaultLoginFormActive" formControlName='active' value="true"
+      placeholder="Active"/>Active</label>
+
+
+
+
+    <div>
+      <label class="control-label">Item Image</label>
+
+      <div class="custom-file">
+        <input type="file" class="custom-file-input form-control" id="image" formControlName="image"
+          (change)='fileChangeEvent($event)' [ngClass]="{'is-invalid': displayMessage.image }">
+        <label data-browse="Procurar" style="width: 400px" class="custom-file-label"></label>
+        <span *ngIf='imageName'><br />{{ imageName }}</span>
+        <span class="text-danger" *ngIf="displayMessage.image">
+          <p [innerHTML]="displayMessage.image"></p>
+        </span>
+      </div>
+      <div *ngIf='imageName' class="row">
+        <div class="col col-md-6">
+          <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false"
+            [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 3" [resizeToWidth]="256"
+            [cropperMinWidth]="128" [onlyScaleDown]="true" [roundCropper]="false" [canvasRotation]="canvasRotation"
+            [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png"
+            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
+            (loadImageFailed)="loadImageFailed()"></image-cropper>
+        </div>
+        <div class="col col-md-6">
+          <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" />
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Sign in button -->
+    <button class="btn btn-outline-dark btn-block my-4" [disabled]='!itemForm.valid'
+    (click)='newItem()' (click)="activeModal.dismiss('Cross click')"  type="button">Register Product</button>
+  </form>
+</div>

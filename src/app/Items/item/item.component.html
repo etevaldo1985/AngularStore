@@ -1,0 +1,42 @@
+<!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Items List</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a (click)='open()' class="dark-text"><i
+            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">PHOTO</th>
+            <th class="text-center">NAME</th>
+            <th class="text-center">MODEL</th>
+            <th class="text-center">COST PRICE</th>
+            <th class="text-center">PRICE</th>
+            <th class="text-center">ACTIVE</th>
+            <th class="text-center">FUNCTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let items of item'>
+
+            <td class="pt-3-half">{{ items.id }}</td>
+            <td class="pt-3-half"><img class="itemList" src="assets/{{items.image}}" alt=""/></td>
+            <td class="pt-3-half">{{ items.name }}</td>
+            <td class="pt-3-half">{{ items.model }}</td>
+            <td class="pt-3-half">{{ items.costPrice}}</td>
+            <td class="pt-3-half">{{ items.price }}</td>>
+            <td class="pt-3-half">{{ items.active }}</td>
+
+            <td>
+              <span class="table-remove"><button type="button"
+                  class="btn btn-outline-black btn-rounded btn-sm my-0">EDIT</button></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->

@@ -1,0 +1,41 @@
+<!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Supplier List</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a (click)='open()' class="dark-text"><i
+            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">NAME</th>
+            <th class="text-center">PHONE</th>
+            <th class="text-center">ADRESS</th>
+            <th class="text-center">CITY</th>
+            <th class="text-center">PROVINCE</th>
+            <th class="text-center">ACTIVE</th>
+            <th class="text-center">FUNCTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let supplier of suppliers'>
+
+            <td class="pt-3-half">{{ supplier.id }}</td>
+            <td class="pt-3-half">{{ supplier.name }}</td>
+            <td class="pt-3-half">{{ supplier.phone }}</td>
+            <td class="pt-3-half">{{ supplier.address.street }}</td>
+            <td class="pt-3-half">{{ supplier.address.city.nameCity }}</td>
+            <td class="pt-3-half">{{ supplier.address.city.province.nameProvince }}</td>
+            <td class="pt-3-half">{{ supplier.active }}</td>
+            <td>
+              <span class="table-remove"><button type="button"
+                  class="btn btn-outline-black btn-rounded btn-sm my-0">EDIT</button></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->

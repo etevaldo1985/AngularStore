@@ -1,0 +1,39 @@
+<div class="modal-header">
+
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="text-center" novalidate [formGroup]='cityForm'>
+
+    <p class="h4 mb-4">New City</p>
+
+    <!-- NameCity -->
+    <input type="nameCity" id="defaultLoginFormNameCity" formControlName='nameCity' class="form-control mb-4"
+      placeholder="city name" [ngClass]="{'is-invalid' : displayMessage.nameCity}" />
+    <span class="text-danger" *ngIf="displayMessage.nameCity">
+      <p [innerHTML]="displayMessage.nameCity"></p>
+    </span>
+
+    <div formGroupName='province'>
+      <!-- Province -->
+      <select formControlName='nameProvince' class="browser-default custom-select">
+        <option value="" disabled selected hidden>Select the province</option>
+        <option *ngFor='let province of provincies' [value]='province.id'>{{province.nameProvince}}</option>
+
+      </select>
+      <span class="text-danger" *ngIf="displayMessage.nameProvince">
+        <p [innerHTML]="displayMessage.nameProvince"></p>
+      </span>
+      <br />
+      <br />
+
+    </div>
+    {{ cityForm.valid }}
+
+    <!-- Sign in button -->
+    <button class="btn btn-outline-dark btn-block my-4" [disabled]='!cityForm.valid' (click)='newCity()'
+      (click)="activeModal.dismiss('Cross click')" type="button">Register City</button>
+  </form>
+</div>

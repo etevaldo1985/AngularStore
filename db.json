@@ -1,0 +1,115 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Etevaldo",
+      "code": "1234",
+      "password": "123456",
+      "confirmPass": "123456"
+    },
+    {
+      "id": 2,
+      "name": "Mara",
+      "code": "5678",
+      "password": "123456",
+      "confirmPass": "123456"
+    }
+  ],
+  "customer": [],
+  "supplier": [
+    {
+      "name": "Mara",
+      "phone": "2503176592",
+      "active": "",
+      "document": "01126929310",
+      "address": {
+        "street": "402 road street",
+        "city": {
+          "nameCity": "Calgary",
+          "province": {
+            "nameProvince": "Alberta"
+          },
+          "id": 3
+        }
+      },
+      "id": 1
+    }
+  ],
+  "address": [],
+  "size": [],
+  "item": [],
+  "city": [
+    {
+      "id": 1,
+      "nameCity": "Kelowna",
+      "province": {
+        "id": 1,
+        "nameProvince": "British Columbia"
+      }
+    },
+    {
+      "id": 2,
+      "nameCity": "Vernon",
+      "province": {
+        "id": 1,
+        "nameProvince": "British Columbia"
+      }
+    },
+    {
+      "nameCity": "Calgary",
+      "province": {
+        "nameProvince": "Alberta",
+        "id": 2
+      },
+      "id": 3
+    },
+    {
+      "nameCity": "Toronto",
+      "province": {
+        "nameProvince": "Ontario",
+        "id": 3
+      },
+      "id": 4
+    }
+  ],
+  "province": [
+    {
+      "id": 1,
+      "nameProvince": "British Columbia"
+    },
+    {
+      "nameProvince": "Alberta",
+      "id": 2
+    },
+    {
+      "nameProvince": "Ontario",
+      "id": 3
+    }
+  ],
+  "log": [
+    {
+      "user": {
+        "id": 1,
+        "name": "Etevaldo",
+        "code": "1234",
+        "password": "123456",
+        "confirmPass": "123456"
+      },
+      "logIn": "2020-10-01 17:44:09",
+      "logout": "2020-10-01 17:56:19",
+      "id": 1
+    },
+    {
+      "user": {
+        "id": 1,
+        "name": "Etevaldo",
+        "code": "1234",
+        "password": "123456",
+        "confirmPass": "123456"
+      },
+      "logIn": "2020-10-01 17:56:34",
+      "logout": "2020-10-01 17:56:42",
+      "id": 2
+    }
+  ]
+}
