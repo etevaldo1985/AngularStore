@@ -1,4 +1,4 @@
-import { Province } from './../../models/province';
+import { Province } from 'src/app/models/province';
 import { City } from './../../models/city';
 import { BaseService } from 'src/app/Service/base.service';
 import { Injectable } from '@angular/core';
@@ -32,6 +32,14 @@ getCityById(id: number): Observable<City> {
       .pipe(catchError(super.serviceError));
 }
 
+updateCity(city: City): Observable<City> {
+  return this.http
+  .put(this.UrlService + 'city' + '/' + city.id, city)
+  .pipe(
+    map(this.extractData),
+    catchError(this.serviceError));
+}
+
 getProvinceById(id: number): Observable<Province> {
   return this.http
       .get<Province>(this.UrlService + 'province' + '/' + id)
@@ -51,5 +59,14 @@ newProvince(province: Province): Observable<Province> {
           map(super.extractData),
           catchError(super.serviceError));
 }
+
+updateProvince(province: Province): Observable<Province> {
+  return this.http
+  .put(this.UrlService + 'province' + '/' + province.id, province)
+  .pipe(
+    map(this.extractData),
+    catchError(this.serviceError));
+}
+
 
 }

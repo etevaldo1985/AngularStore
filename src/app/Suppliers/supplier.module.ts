@@ -16,7 +16,8 @@ import { NewSupplierComponent } from './new-supplier/new-supplier.component';
 @NgModule({
   declarations: [
     SupplierComponent,
-  NewSupplierComponent],
+  NewSupplierComponent
+],
   imports: [
     CommonModule,
     HttpClientModule,

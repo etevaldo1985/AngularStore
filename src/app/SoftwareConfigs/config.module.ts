@@ -1,3 +1,4 @@
+import { EditProvinceComponent } from './Province/edit-province/edit-province.component';
 import { NewProvinceComponent } from './Province/new-province/new-province.component';
 import { ProvinceListComponent } from './Province/province-list/province-list.component';
 import { ConfigAppComponent } from './config.app.component';
@@ -25,7 +26,8 @@ import { NewCityComponent } from './City/new-city/new-city.component';
     CityListComponent,
     NewCityComponent,
     ProvinceListComponent,
-    NewProvinceComponent
+    NewProvinceComponent,
+    EditProvinceComponent
   ],
   imports: [
     CommonModule,

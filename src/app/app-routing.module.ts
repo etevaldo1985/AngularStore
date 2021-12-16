@@ -4,6 +4,7 @@ import { LoginComponent } from './User/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CustomerComponent } from './Customer/customer/customer.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'item', component: ItemComponent },
   { path: 'supplier', component: SupplierComponent },
+  { path: 'customer', component: CustomerComponent },
   {path: 'config',
 loadChildren: () => import('./SoftwareConfigs/config.module')
 .then(m => m.ConfigModule)}

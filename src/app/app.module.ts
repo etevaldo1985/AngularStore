@@ -1,3 +1,4 @@
+import { CustomerModule } from './Customer/customer.module';
 import { ConfigModule } from './SoftwareConfigs/config.module';
 import { SupplierModule } from './Suppliers/supplier.module';
 import { ItemModule } from './Items/item.module';
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -43,7 +45,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ItemModule,
     HammerModule,
     SupplierModule,
-    ConfigModule
+    ConfigModule,
+    CustomerModule
+
+
 
 
 

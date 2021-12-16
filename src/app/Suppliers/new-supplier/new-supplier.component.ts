@@ -139,6 +139,7 @@ nameCity: {
 
     this.supplier = Object.assign({}, this.supplier, this.supplierForm.value);
 
+    // tslint:disable-next-line: radix
     this.supplier.address.city.id = parseInt(this.supplier.address.city.nameCity);
 
 
@@ -165,7 +166,7 @@ nameCity: {
 
           }
 
-    )
+    );
 
 
   }
@@ -175,7 +176,7 @@ nameCity: {
   processSuccess(response: any) {
     this.errors = [];
 
-    const toast = this.toastr.success('Item Registered succefully', 'Good Job!', {timeOut: 1500});
+    const toast = this.toastr.success('Supplier Registered succefully', 'Good Job!', {timeOut: 1500});
     if (toast){
       toast.onHidden.subscribe(() => {
         this.router.navigate(['']);

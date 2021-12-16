@@ -15,12 +15,61 @@
       "confirmPass": "123456"
     }
   ],
-  "customer": [],
+  "customer": [
+    {
+      "name": "Etevaldo ",
+      "phone": "2503176592",
+      "active": true,
+      "address": {
+        "street": "475 Franklyn road",
+        "city": {
+          "nameCity": "Vernon",
+          "province": {
+            "nameProvince": "British Columbia"
+          },
+          "id": 2
+        }
+      },
+      "id": 1
+    },
+    {
+      "name": "Zilmara",
+      "phone": "2505753243",
+      "active": true,
+      "address": {
+        "street": "498 Bernand ave",
+        "city": {
+          "nameCity": "Calgary",
+          "province": {
+            "nameProvince": "Alberta"
+          },
+          "id": 3
+        }
+      },
+      "id": 2
+    },
+    {
+      "name": "ZEZE",
+      "phone": "2506989656",
+      "active": true,
+      "address": {
+        "street": "Springfield 23",
+        "city": {
+          "nameCity": "Calgary",
+          "province": {
+            "nameProvince": "Alberta"
+          },
+          "id": 3
+        }
+      },
+      "id": 3
+    }
+  ],
   "supplier": [
     {
       "name": "Mara",
       "phone": "2503176592",
-      "active": "",
+      "active": true,
       "document": "01126929310",
       "address": {
         "street": "402 road street",
@@ -33,6 +82,23 @@
         }
       },
       "id": 1
+    },
+    {
+      "name": "Etevaldo",
+      "phone": "2505753243",
+      "active": true,
+      "document": "01126929310",
+      "address": {
+        "street": "403-475 franklyn road",
+        "city": {
+          "nameCity": "Kelowna",
+          "province": {
+            "nameProvince": "British Columbia"
+          },
+          "id": 1
+        }
+      },
+      "id": 2
     }
   ],
   "address": [],
@@ -84,6 +150,10 @@
     {
       "nameProvince": "Ontario",
       "id": 3
+    },
+    {
+      "nameProvince": "Northern Territories",
+      "id": 4
     }
   ],
   "log": [

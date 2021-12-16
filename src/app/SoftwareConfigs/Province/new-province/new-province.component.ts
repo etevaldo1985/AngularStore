@@ -26,7 +26,8 @@ export class NewProvinceComponent implements OnInit, AfterViewInit {
 
   localStorage = new LocalStorageUtils();
 
- provinceForm: FormGroup;
+  provinceForm: FormGroup;
+
  errors: any[] = [];
 
  province: Province;

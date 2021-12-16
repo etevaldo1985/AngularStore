@@ -1,3 +1,4 @@
+import { EditProvinceComponent } from './../edit-province/edit-province.component';
 import { NewProvinceComponent } from './../new-province/new-province.component';
 import { Province } from './../../../models/province';
 import { Component, OnInit } from '@angular/core';
@@ -35,7 +36,7 @@ export class ProvinceListComponent implements OnInit {
 
           this.provinces = provinces;
         }
-    )
+    );
 
 
   }
@@ -43,5 +44,19 @@ export class ProvinceListComponent implements OnInit {
   open() {
     const modalRef = this.modalService.open(NewProvinceComponent);
   }
+
+  openEdit(provinceId: Number) {
+
+
+    const modalRef = this.modalService.open(EditProvinceComponent);
+
+
+    modalRef.componentInstance.fromParent = provinceId;
+    modalRef.result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+    });
+  }
+
 
 }
