@@ -7,7 +7,7 @@
 <div class="modal-body">
   <form class="text-center" novalidate [formGroup]='cityForm'>
 
-    <p class="h4 mb-4">New City</p>
+    <p class="h4 mb-4">Edit City</p>
 
     <!-- NameCity -->
     <input type="nameCity" id="defaultLoginFormNameCity" formControlName='nameCity' class="form-control mb-4"
@@ -19,7 +19,7 @@
     <div formGroupName='province'>
       <!-- Province -->
       <select formControlName='nameProvince' class="browser-default custom-select">
-        <option value="" disabled selected hidden>Select the province</option>
+        <option value="" disabled selected hidden>{{city.province.nameProvince}}</option>
         <option *ngFor='let province of provincies' [value]='province.id'>{{province.nameProvince}}</option>
 
       </select>
@@ -32,7 +32,7 @@
     </div>
 
     <!-- Sign in button -->
-    <button class="btn btn-outline-dark btn-block my-4" [disabled]='!cityForm.valid' (click)='newCity()'
-      (click)="activeModal.dismiss('Cross click')" type="button">Register City</button>
+    <button class="btn btn-outline-dark btn-block my-4" [disabled]='!cityForm.valid' (click)='updateCity()'
+      (click)="activeModal.dismiss('Cross click')" type="button">Edit City</button>
   </form>
 </div>

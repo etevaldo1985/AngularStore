@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { NewCustomerComponent } from './new-customer/new-customer.component';
 import { CustomerComponent } from './customer/customer.component';
 import { NgModule } from '@angular/core';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 
 
 
@@ -14,7 +15,8 @@ import { NgModule } from '@angular/core';
 declarations:[
 
 CustomerComponent,
-NewCustomerComponent
+NewCustomerComponent,
+EditCustomerComponent
 
 ],
 

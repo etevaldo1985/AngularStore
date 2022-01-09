@@ -34,7 +34,7 @@ export class NewCityComponent implements OnInit, AfterViewInit {
 
  provincies: Province[];
  city: City;
-  formResult = '';
+
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -85,7 +85,6 @@ export class NewCityComponent implements OnInit, AfterViewInit {
     merge(...controlBlurs)
     .subscribe(() => {
       this.displayMessage = this.genericValidator.processMessages(this.cityForm);
-      this.formResult = JSON.stringify(this.cityForm);
 
     });
 
@@ -95,7 +94,7 @@ export class NewCityComponent implements OnInit, AfterViewInit {
 
     this.city = Object.assign({}, this.city, this.cityForm.value);
 
-    console.log(this.city)
+
 
     this.city.province.id = parseInt(this.city.province.nameProvince)
 
@@ -106,7 +105,7 @@ export class NewCityComponent implements OnInit, AfterViewInit {
 
           const found = provincies.filter(results => results.id === parseInt(this.city.province.nameProvince));
 
-        if (found.length === 0 ) {
+          if (found.length === 0 ) {
 
         }else {
 

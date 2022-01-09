@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LocalStorageUtils } from 'src/app/Utils/localstorageutils';
 import { ConfigService } from '../../Service/config.service';
 import { NewCityComponent } from '../new-city/new-city.component';
+import { EditCityComponent } from '../edit-city/edit-city.component';
 
 @Component({
   selector: 'app-city-list',
@@ -44,6 +45,19 @@ export class CityListComponent implements OnInit {
 
   open() {
     const modalRef = this.modalService.open(NewCityComponent);
+  }
+
+  openEditCity(cityId: Number) {
+
+    const modalRef = this.modalService.open(EditCityComponent);
+
+
+    modalRef.componentInstance.fromParent = cityId;
+    modalRef.result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+    });
+
   }
 
 }

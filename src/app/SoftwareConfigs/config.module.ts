@@ -15,6 +15,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { MainConfigComponent } from './main-config/main-config.component';
 import { CityListComponent } from './City/city-list/city-list.component';
 import { NewCityComponent } from './City/new-city/new-city.component';
+import { EditCityComponent } from './City/edit-city/edit-city.component';
 
 
 
@@ -27,7 +28,8 @@ import { NewCityComponent } from './City/new-city/new-city.component';
     NewCityComponent,
     ProvinceListComponent,
     NewProvinceComponent,
-    EditProvinceComponent
+    EditProvinceComponent,
+    EditCityComponent
   ],
   imports: [
     CommonModule,

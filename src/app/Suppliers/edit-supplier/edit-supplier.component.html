@@ -1,0 +1,77 @@
+<div class="modal-header">
+
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="text-center" novalidate [formGroup]='supplierForm'>
+
+    <p class="h4 mb-4">Edit Supplier</p>
+
+    <!-- Name -->
+    <input type="name" id="defaultLoginFormName" formControlName='name' class="form-control mb-4" placeholder="name"
+      [ngClass]="{'is-invalid' : displayMessage.name}" />
+    <span class="text-danger" *ngIf="displayMessage.name">
+      <p [innerHTML]="displayMessage.name"></p>
+    </span>
+
+    <!-- Document -->
+    <input type="document" id="defaultLoginFormDocument" formControlName='document' class="form-control mb-4"
+      placeholder="document" [ngClass]="{'is-invalid' : displayMessage.document}" />
+    <span class="text-danger" *ngIf="displayMessage.document">
+      <p [innerHTML]="displayMessage.document"></p>
+    </span>
+
+    <!-- Phone -->
+    <input type="phone" id="defaultLoginFormPhone" formControlName='phone' class="form-control mb-4" placeholder="phone"
+      [ngClass]="{'is-invalid' : displayMessage.phone}" />
+    <span class="text-danger" *ngIf="displayMessage.phone">
+      <p [innerHTML]="displayMessage.phone"></p>
+    </span>
+
+    <h4>Address</h4>
+    <hr>
+    <div formGroupName='address'>
+      <!-- Address -->
+      <input type="street" id="defaultLoginFormStreet" formControlName='street' class="form-control mb-4"
+        placeholder="address" [ngClass]="{'is-invalid' : displayMessage.street}" />
+      <span class="text-danger" *ngIf="displayMessage.street">
+        <p [innerHTML]="displayMessage.street"></p>
+      </span>
+
+      <!-- City -->
+      <div formGroupName='city'>
+        <select formControlName='nameCity' class="browser-default custom-select">
+          <option value="" disabled selected hidden>{{supplier.address.city.nameCity}}</option>
+          <option *ngFor='let city of cities' [value]='city.id'>{{city.nameCity}} / {{ city.province.nameProvince}}
+          </option>
+
+        </select>
+        <span class="text-danger" *ngIf="displayMessage.nameCity">
+          <p [innerHTML]="displayMessage.nameCity"></p>
+        </span>
+        <br />
+        <br />
+
+      </div>
+
+
+    </div>
+    <!-- Active -->
+
+    <label class="checkbox"><input class="form-check-input form-control" type="checkbox" id="defaultLoginFormActive"
+        formControlName='active' value="true" placeholder="Active" />Active</label>
+
+
+
+
+
+
+
+
+    <!-- Sign in button -->
+    <button class="btn btn-outline-dark btn-block my-4" [disabled]='!supplierForm.valid' (click)='updateSupplier()'
+      (click)="activeModal.dismiss('Cross click')" type="button">Edit Supplier</button>
+  </form>
+</div>

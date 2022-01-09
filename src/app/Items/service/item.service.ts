@@ -26,4 +26,18 @@ getItems(): Observable<Item[]> {
       .pipe(catchError(super.serviceError));
 }
 
+getItemsById(id: Number): Observable<Item> {
+  return this.http
+  .get<Item>(this.UrlService + 'item' + '/' + id)
+  .pipe(catchError(super.serviceError));
+}
+
+updateItem(item: Item): Observable<Item> {
+  return this.http
+  .put(this.UrlService + 'item' + '/' + item.id, item)
+  .pipe(
+    map(this.extractData),
+    catchError(this.serviceError));
+}
+
 }

@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewItemComponent } from './new-item/new-item.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { EditItemComponent } from './edit-item/edit-item.component';
 
 
 
@@ -14,7 +15,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 @NgModule({
   declarations: [
  ItemComponent,
- NewItemComponent
+ NewItemComponent,
+ EditItemComponent
   ],
   imports: [
     CommonModule,

@@ -30,7 +30,7 @@
             <td class="pt-3-half">{{ customer.active }}</td>
             <td>
               <span class="table-remove"><button type="button"
-                  class="btn btn-outline-black btn-rounded btn-sm my-0">EDIT</button></span>
+                  class="btn btn-outline-black btn-rounded btn-sm my-0" (click)='editCustomer(customer.id)' >EDIT</button></span>
             </td>
           </tr>
         </tbody>

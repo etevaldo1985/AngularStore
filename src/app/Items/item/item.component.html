@@ -15,7 +15,6 @@
             <th class="text-center">COST PRICE</th>
             <th class="text-center">PRICE</th>
             <th class="text-center">ACTIVE</th>
-            <th class="text-center">FUNCTIONS</th>
           </tr>
         </thead>
         <tbody>
@@ -26,12 +25,12 @@
             <td class="pt-3-half">{{ items.name }}</td>
             <td class="pt-3-half">{{ items.model }}</td>
             <td class="pt-3-half">{{ items.costPrice}}</td>
-            <td class="pt-3-half">{{ items.price }}</td>>
+            <td class="pt-3-half">{{ items.price }}</td>
             <td class="pt-3-half">{{ items.active }}</td>
 
             <td>
               <span class="table-remove"><button type="button"
-                  class="btn btn-outline-black btn-rounded btn-sm my-0">EDIT</button></span>
+                  class="btn btn-outline-black btn-rounded btn-sm my-0" (click)="editItem(items.id)">EDIT</button></span>
             </td>
           </tr>
         </tbody>

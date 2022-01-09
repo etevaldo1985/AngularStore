@@ -7,7 +7,7 @@
 <div class="modal-body">
   <form class="text-center" novalidate [formGroup]='itemForm'>
 
-    <p class="h4 mb-4">New Product</p>
+    <p class="h4 mb-4">Edit Product</p>
 
     <!-- Name -->
     <input type="name" id="defaultLoginFormName" formControlName='name' class="form-control mb-4" placeholder="name"
@@ -35,7 +35,9 @@
       <p [innerHTML]="displayMessage.price"></p>
     </span>
 
-
+    <div>
+      Current Image <td class="pt-3-half"><img class="itemList" src="assets/{{item.image}}" alt=""/></td>
+    </div>
 
 
     <!-- Active -->
@@ -50,9 +52,9 @@
       <label class="control-label">Item Image</label>
 
       <div class="custom-file">
-        <input type="file" class="custom-file-input form-control" id="image" formControlName="image"
+        <input type="file"  class="custom-file-input form-control" id="image" formControlName="image"
           (change)='fileChangeEvent($event)' [ngClass]="{'is-invalid': displayMessage.image }">
-        <label data-browse="Procurar" style="width: 400px" class="custom-file-label"></label>
+        <label data-browse="Search" style="width: 400px" class="custom-file-label"></label>
         <span *ngIf='imageName'><br />{{ imageName }}</span>
         <span class="text-danger" *ngIf="displayMessage.image">
           <p [innerHTML]="displayMessage.image"></p>
@@ -77,6 +79,6 @@
 
     <!-- Sign in button -->
     <button class="btn btn-outline-dark btn-block my-4" [disabled]='!itemForm.valid'
-    (click)='newItem()' (click)="activeModal.dismiss('Cross click')"  type="button">Register Product</button>
+    (click)='updateItem()' (click)="activeModal.dismiss('Cross click')"  type="button">Register Product</button>
   </form>
 </div>

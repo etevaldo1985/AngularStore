@@ -1,3 +1,4 @@
+import { UserModule } from './User/user.module';
 import { CustomerModule } from './Customer/customer.module';
 import { ConfigModule } from './SoftwareConfigs/config.module';
 import { SupplierModule } from './Suppliers/supplier.module';
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserListComponent } from './User/user-list/user-list.component';
 
 
 
@@ -29,8 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     MenuComponent,
     FooterComponent,
-    HomeComponent,
-    LoginComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HammerModule,
     SupplierModule,
     ConfigModule,
-    CustomerModule
+    CustomerModule,
+    UserModule
 
 
 
@@ -55,7 +57,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

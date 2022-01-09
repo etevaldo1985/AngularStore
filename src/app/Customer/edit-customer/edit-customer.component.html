@@ -1,0 +1,71 @@
+<div class="modal-header">
+
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="text-center" novalidate [formGroup]='customerForm'>
+
+    <p class="h4 mb-4">Edit Customer</p>
+
+    <!-- Name -->
+    <input type="name" id="defaultLoginFormName" formControlName='name' class="form-control mb-4" placeholder="name"
+      [ngClass]="{'is-invalid' : displayMessage.name}" />
+    <span class="text-danger" *ngIf="displayMessage.name">
+      <p [innerHTML]="displayMessage.name"></p>
+    </span>
+
+
+    <!-- Phone -->
+    <input type="phone" id="defaultLoginFormPhone" formControlName='phone' class="form-control mb-4" placeholder="phone"
+      [ngClass]="{'is-invalid' : displayMessage.phone}" />
+    <span class="text-danger" *ngIf="displayMessage.phone">
+      <p [innerHTML]="displayMessage.phone"></p>
+    </span>
+
+    <h4>Address</h4>
+    <hr>
+    <div formGroupName='address'>
+      <!-- Address -->
+      <input type="street" id="defaultLoginFormStreet" formControlName='street' class="form-control mb-4"
+        placeholder="address" [ngClass]="{'is-invalid' : displayMessage.street}" />
+      <span class="text-danger" *ngIf="displayMessage.street">
+        <p [innerHTML]="displayMessage.street"></p>
+      </span>
+
+      <!-- City -->
+      <div formGroupName='city'>
+        <select formControlName='nameCity' class="browser-default custom-select">
+          <option value="" disabled selected hidden>{{customer.address.city.nameCity}} / {{customer.address.city.province.nameProvince}}</option>
+          <option *ngFor='let city of cities' [value]='city.id'>{{city.nameCity}} / {{ city.province.nameProvince}}
+          </option>
+
+        </select>
+        <span class="text-danger" *ngIf="displayMessage.nameCity">
+          <p [innerHTML]="displayMessage.nameCity"></p>
+        </span>
+        <br />
+        <br />
+
+      </div>
+
+
+    </div>
+    <!-- Active -->
+
+    <label class="checkbox"><input class="form-check-input form-control" type="checkbox" id="defaultLoginFormActive"
+        formControlName='active' value="true" placeholder="Active" />Active</label>
+
+
+
+
+
+
+
+
+    <!-- Sign in button -->
+    <button class="btn btn-outline-dark btn-block my-4" [disabled]='!customerForm.valid' (click)='updateCustomer()'
+      (click)="activeModal.dismiss('Cross click')" type="button">Edit Customer</button>
+  </form>
+</div>

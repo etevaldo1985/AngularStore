@@ -1,3 +1,4 @@
+import { UserListComponent } from './User/user-list/user-list.component';
 import { SupplierComponent } from './Suppliers/supplier/supplier.component';
 import { ItemComponent } from './Items/item/item.component';
 import { LoginComponent } from './User/login/login.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'item', component: ItemComponent },
   { path: 'supplier', component: SupplierComponent },
+  { path: 'user', component: UserListComponent },
   { path: 'customer', component: CustomerComponent },
   {path: 'config',
 loadChildren: () => import('./SoftwareConfigs/config.module')

@@ -1,26 +1,22 @@
-import { Item } from './../../models/item';
-import { ItemService } from './../service/item.service';
-
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
-import { FormControlName, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, ElementRef, Input, OnInit, ViewChildren, AfterViewInit } from '@angular/core';
+import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { CustomValidators } from 'ng2-validation';
+import { Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, fromEvent, merge } from 'rxjs';
-import { ImageTransform, Dimensions, ImageCroppedEvent } from 'ngx-image-cropper';
-
-
-
+import { Item } from 'src/app/models/item';
 import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/Utils/generic-form-validation';
 import { LocalStorageUtils } from 'src/app/Utils/localstorageutils';
+import { ItemService } from '../service/item.service';
 
 @Component({
-  selector: 'app-new-item',
-  templateUrl: './new-item.component.html'
+  selector: 'app-edit-item',
+  templateUrl: './edit-item.component.html'
 })
-export class NewItemComponent implements OnInit, AfterViewInit {
+export class EditItemComponent implements OnInit, AfterViewInit {
+
+  @Input() fromParent;
 
   @ViewChildren(FormControlName, { read: ElementRef}) formInputElements: ElementRef[];
 
@@ -46,9 +42,6 @@ export class NewItemComponent implements OnInit, AfterViewInit {
 
  item: Item;
  itemArray: Item[];
-
-
-
 
 
 
@@ -82,6 +75,17 @@ image: {
   }
 
   ngOnInit(): void {
+
+    this.itemService.getItemsById(this.fromParent)
+    .subscribe(
+
+      itemSingle => {
+
+        this.item = itemSingle;
+        this.fillUpForm();
+      }
+    );
+
     this.itemForm = this.fb.group({
       name: ['', Validators.required],
       model: ['', Validators.required],
@@ -92,69 +96,50 @@ image: {
 
     });
 
+
   }
 
   ngAfterViewInit(): void {
     const controlBlurs: Observable<any>[] = this.formInputElements
-    .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+      .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
 
     merge(...controlBlurs)
-    .subscribe(() => {
-      this.displayMessage = this.genericValidator.processMessages(this.itemForm);
+      .subscribe(() => {
+        this.displayMessage = this.genericValidator.processMessages(this.itemForm);
+      });
+
+  }
+
+
+
+  fillUpForm(){
+
+    this.itemForm.patchValue({
+      name: this.item.name,
+      model: this.item.model,
+      costPrice: this.item.costPrice,
+      price: this.item.price,
+      active: this.item.active
     });
   }
 
-  newItem(){
+  updateItem(){}
 
-    this.item = Object.assign({}, this.item, this.itemForm.value);
-
-
-    this.item.imageUpload = this.croppedImage.split(',')[1];
-    this.item.image = this.imageName;
-
-    this.itemService.newItem(this.item)
-    .subscribe(
-      success => {this.processSuccess(success); },
-          fail => {this.processFail(fail); }
-    );
-
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+    this.imageName = event.currentTarget.files[0].name;
   }
-
-
-
-  processSuccess(response: any) {
-    this.errors = [];
-
-    const toast = this.toastr.success('Item Registered succefully', 'Good Job!', {timeOut: 1500});
-    if (toast){
-      toast.onHidden.subscribe(() => {
-        this.router.navigate(['']);
-      });
-    }
-
-}
-
-processFail(fail: any) {
-  this.errors = fail.error.errors;
-  this.toastr.error('Something went wrong', 'Ops!', {timeOut: 1500});
-
-}
-
-fileChangeEvent(event: any): void {
-  this.imageChangedEvent = event;
-  this.imageName = event.currentTarget.files[0].name;
-}
-imageCropped(event: ImageCroppedEvent) {
-  this.croppedImage = event.base64;
-}
-imageLoaded() {
-  this.showCropper = true;
-}
-cropperReady(sourceImageDimensions: Dimensions) {
-  console.log('Cropper ready', sourceImageDimensions);
-}
-loadImageFailed() {
-  this.errors.push('The file format ' + this.imageName + ' is not accepted');
-}
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+  imageLoaded() {
+    this.showCropper = true;
+  }
+  cropperReady(sourceImageDimensions: Dimensions) {
+    console.log('Cropper ready', sourceImageDimensions);
+  }
+  loadImageFailed() {
+    this.errors.push('The file format ' + this.imageName + ' is not accepted');
+  }
 
 }

@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { NewSupplierComponent } from './new-supplier/new-supplier.component';
+import { EditSupplierComponent } from './edit-supplier/edit-supplier.component';
 
 
 
@@ -16,7 +17,8 @@ import { NewSupplierComponent } from './new-supplier/new-supplier.component';
 @NgModule({
   declarations: [
     SupplierComponent,
-  NewSupplierComponent
+  NewSupplierComponent,
+  EditSupplierComponent
 ],
   imports: [
     CommonModule,

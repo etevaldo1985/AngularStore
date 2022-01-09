@@ -1,3 +1,4 @@
+import { EditSupplierComponent } from './../edit-supplier/edit-supplier.component';
 import { ConfigService } from './../../SoftwareConfigs/Service/config.service';
 import { NewSupplierComponent } from './../new-supplier/new-supplier.component';
 import { SupplierService } from './../service/supplier.service';
@@ -29,17 +30,17 @@ export class SupplierComponent implements OnInit {
     private toastr: ToastrService,
     private supplierService: SupplierService,
     private configService: ConfigService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
 
     this.supplierService.getSuppliers()
-    .subscribe(
-      suppliers => {
-        this.suppliers = suppliers;
+      .subscribe(
+        suppliers => {
+          this.suppliers = suppliers;
 
         }
-    );
+      );
 
   }
 
@@ -47,4 +48,17 @@ export class SupplierComponent implements OnInit {
     const modalRef = this.modalService.open(NewSupplierComponent);
   }
 
+  editSupplier(supplierId: Number) {
+
+    const modalRef = this.modalService.open(EditSupplierComponent);
+
+    modalRef.componentInstance.fromParent = supplierId;
+    modalRef.result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+
+    });
+
+
+  }
 }

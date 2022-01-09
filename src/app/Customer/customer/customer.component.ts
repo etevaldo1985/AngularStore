@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { EditCustomerComponent } from '../edit-customer/edit-customer.component';
 
 @Component({
   selector: 'app-customer',
@@ -42,6 +43,17 @@ export class CustomerComponent implements OnInit {
   open() {
 
     const modalRef = this.modalService.open(NewCustomerComponent);
+  }
+
+  editCustomer(customerId: Number) {
+
+    const modalRef = this.modalService.open(EditCustomerComponent);
+
+    modalRef.componentInstance.fromParent = customerId;
+    modalRef.result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+    });
   }
 
 }

@@ -27,4 +27,18 @@ getCustomers(): Observable<Customer[]> {
     .get<Customer[]>(this.UrlService + 'customer')
     .pipe(catchError(super.serviceError));
 }
+
+getCustomerById(id: Number): Observable<Customer> {
+  return this.http
+  .get<Customer>(this.UrlService + 'customer' + '/' + id)
+  .pipe(catchError(super.serviceError));
+}
+
+updateCustomer(customer: Customer): Observable<Customer> {
+  return this.http
+  .put(this.UrlService + 'customer' + '/' + customer.id, customer)
+  .pipe(
+    map(this.extractData),
+    catchError(this.serviceError));
+}
 }

@@ -28,4 +28,19 @@ getSuppliers(): Observable<Supplier[]> {
       .pipe(catchError(super.serviceError));
 }
 
+getSupplierById(id: Number): Observable<Supplier> {
+  return this.http
+  .get<Supplier>(this.UrlService + 'supplier' + '/' + id)
+  .pipe(catchError(super.serviceError));
+
+}
+
+updateSupplier(supplier: Supplier): Observable<Supplier> {
+  return this.http
+  .put(this.UrlService + 'supplier' + '/' + supplier.id, supplier)
+  .pipe(
+    map(this.extractData),
+    catchError(this.serviceError));
+}
+
 }

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { Item } from 'src/app/models/item';
+import { EditItemComponent } from '../edit-item/edit-item.component';
 
 
 @Component({
@@ -41,6 +42,18 @@ export class ItemComponent implements OnInit {
 
   open() {
     const modalRef = this.modalService.open(NewItemComponent);
+  }
+
+  editItem(itemId: Number) {
+
+    const modalRef = this.modalService.open(EditItemComponent);
+
+    modalRef.componentInstance.fromParent = itemId;
+    modalRef.result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+
+    });
   }
 
 }
